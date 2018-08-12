@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { apikey } = require('../.env');
+const apikey = process.env.API_KEY || process.env.API_DEV_KEY;
 
 const getMovieData = async (param, value) => {
     let movieData = undefined;
