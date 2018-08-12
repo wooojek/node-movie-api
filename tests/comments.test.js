@@ -4,9 +4,19 @@ const request = require('supertest');
 const { app } = require('../index');
 const { Comment } = require('../models/comment');
 
+const comments = [{
+    text: '1st test comment',
+    author: '1st test author'
+}, {
+    text: '2nd test comment',
+    author: '2nd test author'
+}];
+
 beforeEach((done) => {
-    Comment.remove({}).then(() => done());
-})
+    Comment.remove({}).then(() => {
+        return Comment.insertMany(comments);
+    }).then((() => done()));
+});
 
 describe('POST /comments', () => {
     it('should create a new comment', (done) => {
@@ -29,7 +39,8 @@ describe('POST /comments', () => {
                     return done(err);
                 }
 
-                Comment.find().then((comments) => {
+                Comment.find({text}).then((comments) => {
+                    console.log(comments)
                     expect(comments.length).toBe(1);
                     expect(comments[0].text).toBe(text);
                     expect(comments[0].author).toBe(author);
@@ -49,9 +60,21 @@ describe('POST /comments', () => {
                 }
 
                 Comment.find().then((comments) => {
-                    expect(comments.length).toBe(0);
+                    expect(comments.length).toBe(2);
                     done();
                 }).catch((e) => done(e));
             });
+    });
+});
+
+describe('GET /comments', () => {
+    it('should get all comments', (done) => {
+        request(app)
+            .get('/comments')
+            .expect(200)
+            .expect(((res) => {
+                expect(res.body.comments.length).toBe(2);
+            }))
+            .end(done);
     });
 });
