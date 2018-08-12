@@ -24,15 +24,16 @@ router.post('/', async (req, res) => {
             throw new Error('Unable to get movie without id or title');
         }
     } catch (e) {
-        res.status(400);
-    }
-
-    if (response.Response === 'False') {
-        res.status(422).send(response.Error);
+        res.status(400).send();
         return;
     }
 
-    await Movie.find({
+    if (response.Response === 'False') {
+        res.status(404).send(response.Error);
+        return;
+    }
+
+    Movie.find({
         imdbID: response.imdbID
     }).then((movies) => {
         if (!movies.length) {
@@ -45,5 +46,11 @@ router.post('/', async (req, res) => {
         res.status(422).send('Movie already present in database');
     });
 });
+
+router.get('/', async (req, res) => {
+    Movie.find({}).then((movies) => {
+        res.send({ movies });
+    }, (e) => res.status(400).send(e));
+})
 
 module.exports = router;

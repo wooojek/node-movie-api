@@ -8,7 +8,7 @@ const { Movie } = require('../models/movie');
 before((done) => {
     Movie.remove({}).then(async () => {
         const movieData = await getMovieData('i', 'tt1856101');
-        return Movie.insertMany([movieData]);
+        return Movie.create([movieData]);
     }).then((() => done()));
 });
 
@@ -120,4 +120,24 @@ describe('POST /movies', () => {
                 }).catch((e) => done(e));
             });
     })
+});
+
+describe('GET /movies', (done) => {
+    before((done) => {
+        Movie.remove({}).then(async () => {
+            const movieData1 = await getMovieData('i', 'tt1856101');
+            const movieData2 = await getMovieData('i', 'tt3896198');
+            return Movie.create([movieData1, movieData2]);
+        }).then((() => done()));
+    });
+
+    it('should get all movies saved in database', (done) => {
+        request(app)
+            .get('/movies')
+            .expect(200)
+            .expect(((res) => {
+                expect(res.body.movies.length).toBe(2);
+            }))
+            .end(done);
+    });
 });
