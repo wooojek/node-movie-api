@@ -5,13 +5,14 @@ const comments = require('./routes/comments');
 const movies = require('./routes/movies');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use('/comments', comments);
 app.use('/movies', movies);
 
-app.listen(3000, () => {
-    console.log('started on port 3000');
+app.listen(port, () => {
+    console.log(`Started on port ${port}`);
 });
 
 module.exports = { app };

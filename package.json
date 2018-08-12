@@ -1,34 +1,38 @@
 {
-  "name": "movie-api",
-  "version": "1.0.0",
-  "description": "Movie REST API, synced with omdbapi",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha ./**/*.test.js",
-    "test-watch": "nodemon --exec 'npm run test'",
-    "test-comments": "mocha tests/comments.test.js",
-    "test-comments-watch": "nodemon --exec 'npm run test-comments'",
-    "test-movies": "mocha tests/movies.test.js",
-    "test-movies-watch": "nodemon --exec 'npm run test-movies'"
-  },
-  "keywords": [
-    "movie",
-    "mongodb",
-    "rest"
-  ],
-  "author": "wooojek",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mongodb": "^3.1.1",
-    "mongoose": "^5.2.7"
-  },
-  "devDependencies": {
-    "expect": "^23.5.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.3",
-    "supertest": "^3.1.0"
-  }
+    "name": "movie-api",
+    "version": "1.0.0",
+    "description": "Movie REST API, synced with omdbapi",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./index.js",
+        "test": "mocha ./**/*.test.js",
+        "test-watch": "nodemon --exec 'npm run test'",
+        "test-comments": "mocha tests/comments.test.js",
+        "test-comments-watch": "nodemon --exec 'npm run test-comments'",
+        "test-movies": "mocha tests/movies.test.js",
+        "test-movies-watch": "nodemon --exec 'npm run test-movies'"
+    },
+    "engines": {
+        "node": "9.5.0"
+    },
+    "keywords": [
+        "movie",
+        "mongodb",
+        "rest"
+    ],
+    "author": "wooojek",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.18.0",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "mongodb": "^3.1.1",
+        "mongoose": "^5.2.7"
+    },
+    "devDependencies": {
+        "expect": "^23.5.0",
+        "mocha": "^5.2.0",
+        "nodemon": "^1.18.3",
+        "supertest": "^3.1.0"
+    }
 }
