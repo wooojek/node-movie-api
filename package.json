@@ -4,7 +4,8 @@
   "description": "Movie REST API, synced with omdbapi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "testComments": "mocha tests/comments.test.js",
+    "test-comments-watch": "nodemon --exec 'npm run testComments'"
   },
   "keywords": [
     "movie",
@@ -18,5 +19,11 @@
     "express": "^4.16.3",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.7"
+  },
+  "devDependencies": {
+    "expect": "^23.5.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "supertest": "^3.1.0"
   }
 }
