@@ -17,17 +17,13 @@ router.post('/', (req, res) => {
 
     comment.save().then((doc) => {
         res.send(doc);
-    }, (e) => {
-        res.status(400).send(e);
-    })
+    }, (e) => res.status(400).send(e));
 });
 
 router.get('/', (req, res) => {
     Comment.find({}).then((comments) => {
         res.send({ comments });
-    }, (e) => {
-        res.status(400).send(e);
-    });
+    }, (e) => res.status(400).send(e));
 });
 
 module.exports = router;

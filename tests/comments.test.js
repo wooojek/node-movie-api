@@ -40,7 +40,6 @@ describe('POST /comments', () => {
                 }
 
                 Comment.find({text}).then((comments) => {
-                    console.log(comments)
                     expect(comments.length).toBe(1);
                     expect(comments[0].text).toBe(text);
                     expect(comments[0].author).toBe(author);
