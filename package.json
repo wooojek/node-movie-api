@@ -20,6 +20,12 @@
         "mongodb",
         "rest"
     ],
+    "apidoc": {
+        "title": "apiDoc for movie-api",
+        "name": "movie-api documentation",
+        "version": "0.0.1",
+        "description": "Movie API documentation"
+    },
     "author": "wooojek",
     "license": "ISC",
     "dependencies": {
