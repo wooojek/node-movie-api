@@ -2,6 +2,8 @@
 
 Simple movie API that gets data from OMDB API and stores responses in MongoDB
 
+Docs: https://wooojek.github.io/node-movie-api/
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
